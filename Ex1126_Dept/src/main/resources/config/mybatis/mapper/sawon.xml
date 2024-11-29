@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="s">
+	
+	<!-- 부서목록에 따른 사원목록 조회 -->
+	<select id="sawon_list"
+			resultType="sawon"
+			parameterType="int">
+		select * from sawon
+		where deptno = #{deptno}
+	</select>
+
+	<!-- 사원 삭제 -->
+	<delete id="sawon_del"
+			parameterType="int">
+		delete from sawon 
+		where sabun = #{sabun}
+	</delete>
+	
+	<!-- 사원 추가 -->
+	<insert id="sawon_insert"
+			parameterType="sawon">
+		insert into sawon values(
+					seq_sawon_sabun.nextval,
+					#{ saname },
+					#{ sagen },
+					#{ deptno },
+					#{ sajob },
+					sysdate,
+					#{ samgr },
+					#{ sapay }		
+			)
+	</insert>
+	
+	<!-- 사원 한 명 조회 -->
+	<select id="sawon_one"
+			resultType="sawon"
+			parameterType="int">
+		select * from sawon
+		where sabun = #{sabun}
+	</select>
+	
+	<!-- 사원 수정 -->
+	<update id="sawon_update"
+			parameterType="sawon">
+		update sawon set deptno=#{deptno}, samgr=#{samgr}, sapay=#{sapay},
+ 					 	 saname=#{saname}, sajob=#{sajob} 
+ 		where sabun=#{sabun}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
