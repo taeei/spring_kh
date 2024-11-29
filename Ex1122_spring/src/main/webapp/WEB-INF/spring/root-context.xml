@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+		
+	<!--  -->	
+	
+	<!-- 
+	스프링에서 객체를 생성하려면 스프링빈 개념을 사용한다.
+	PersonVO p1 = new PersonVO();
+	p1.setName("홍길동"); 
+	-->
+	<bean id="p1" class="vo.PersonVO">
+		<!-- 아래와 같이 객체의 setter를 통해 값을 넣는 방식을
+		     si(setter injection)-세터 주입 이라고 한다-->
+		
+		<!-- name이라는 이름의 setter를 찾아 값을 넣는다 -->
+		<property name="name" value="홍길동"/> 
+		<property name="age" value="20"/>
+		<property name="tel" value="010-1111-2222"/>
+	</bean>
+	
+	
+	<!-- PersonVO p2 = new PersonVO("홍길동", 33, "010-111-1111"); -->
+	<bean id="p2" class="vo.PersonVO">
+		<!-- 객체가 생성되는 단계에서 생성자에 바로 값으 주입하는 구조를
+			 ci(constructor injection)-생성자 주입 이라고 한다 -->
+	
+		<constructor-arg value="여기가 이름"/>
+		<constructor-arg value="30"/>
+		<constructor-arg value="010-111-1111"/>
+	</bean>
+	
+	
+		
+</beans>
