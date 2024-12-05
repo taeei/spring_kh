@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+	
+	<!-- AOP( Aspect Orented Programming ) :
+		 애플리케이션을 모듈화 하여 작성했을 때, 다수의 객체들에
+		 분산되어 존재하는 공통 관심사를 하나로 묶어서 관리할 수 있독록
+		 하는 기술 -->
+		 
+	<!-- 공통 관심사항이 구현된 객체 생성 -->
+	<bean id="advice" class="advice.Advice"/>
+	
+	<!-- AOP설정 -->
+	<aop:config>
+		<aop:pointcut expression="execution(public * com.kh.aop.service.*Service.*(..))"
+						id="myPoint"/>
+						
+		<aop:aspect id="test" ref="advice">
+			<aop:before method="before" pointcut-ref="myPoint"/>
+			<aop:after method="after" pointcut-ref="myPoint"/>
+		</aop:aspect>		
+	</aop:config>
+	
+</beans>
