@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+#comment_form{
+		width: 500px;
+		min-height: 50px;
+		border: 1px solid gray;
+}
+
+#comment_form table th{
+	background: #888;
+	color: white;
+	width: 80px;
+}
+
+textarea{
+	resize: none;
+}
